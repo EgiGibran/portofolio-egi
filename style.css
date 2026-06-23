@@ -1,18 +1,18 @@
-/* =========================
-   GOOGLE FONT
-========================= */
+/* ========================================================
+   GOOGLE FONT & INITIAL VARIABLE
+   ======================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-
 :root {
-  --deep-blue: #182350;     /* Warna background utama/gelap */
-  --powder-blue: #AFD2FA;   /* Warna aksen terang/highlight */
-  --floral-white: #FEFAEF;  /* Warna teks utama & card cerah */
-  --pale-brown: #B9915E;    /* Warna tombol premium/aksen hangat */
+  --deep-blue: #182350;     /* Biru dongker murni bawaan awal lu */
+  --powder-blue: #AFD2FA;   /* Warna aksen terang */
+  --floral-white: #FEFAEF;  /* Warna teks utama & card */
+  --pale-brown: #B9915E;    /* Warna tombol premium */
 }
-/* =========================
-   RESET & BASE
-========================= */
+
+/* ========================================================
+   RESET & BASE SYSTEM (SATU BG UNTUK SEMUA)
+   ======================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -22,44 +22,52 @@
 html, body {
   width: 100%;
   height: 100%;
-  background: var(--deep-blue);
   color: var(--floral-white);
   font-family: 'Inter', sans-serif;
+  
+  /* Kunci Utama: Satu background global yang terintegrasi di body */
+  background-image: 
+    linear-gradient(rgba(24, 35, 80, 0.4), rgba(24, 35, 80, 0.4)), 
+    url('assets/bg-contact.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Bikin background diem statis yang elegan pas di-scroll */
+  background-color: var(--deep-blue);
+  background-blend-mode: overlay;
 }
 
-/* Global scroll setting */
 body {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-/* =========================
-   SMOOTH SCROLL CONTAINER
-========================= */
+/* ========================================================
+   SMOOTH SCROLL & LAYOUT CONTAINER
+   ======================================================== */
 .scroll-container {
-  /* Ubah dari 100vh ke auto supaya bisa di-scroll bebas */
   height: auto;
   overflow-y: visible;
   overflow-x: hidden;
-  /* Matikan total scroll-snap */
   scroll-snap-type: none !important;
   scroll-behavior: smooth;
 }
 
 .section {
   min-height: 100vh;
-  /* Matikan snap align di section */
   scroll-snap-align: none !important;
   scroll-snap-stop: normal !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 8%;
+  padding: 80px 8%;
+  position: relative;
+  background: transparent !important; /* Dipastikan semua section transparan */
 }
 
-/* =========================
-   NAVBAR & LOGO (STAY RAMPING)
-========================= */
+/* ========================================================
+   NAVBAR & LOGO (RESPONSIVE READY)
+   ======================================================== */
 .navbar {
   position: fixed;
   top: 0;
@@ -82,9 +90,9 @@ body {
   max-width: 1100px;
   height: 65px;
   border-radius: 100px;
-  background: rgba(24, 35, 80, 0.5) !important; /* Transparansi Deep Blue */
+  background: rgba(24, 35, 80, 0.7) !important;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(175, 210, 250, 0.2); /* Border tipis pake Powder Blue */
+  border: 1px solid rgba(175, 210, 250, 0.2);
   box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
 
@@ -96,23 +104,51 @@ body {
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
-  transition: 0.3s;
+  z-index: 1002;
 }
 
-.nav-links { display: flex; gap: 40px; }
+/* Menu bawaan desktop */
+.nav-links { 
+  display: flex; 
+  gap: 40px; 
+}
+
 .nav-links a { 
   text-decoration: none; 
   color: var(--floral-white);
   font-size: 0.95rem; 
   transition: 0.3s; 
 }
+
 .nav-links a:hover { 
   color: var(--powder-blue); 
 }
 
-/* =========================
-   LAYOUT & CONTENT (SEJAJAR)
-========================= */
+/* ========================================================
+   CLEANING SECTION BG (SEMUA DIBUAT TRANSPARAN PENUH)
+   ======================================================== */
+
+.home-about-group {
+  width: 100%;
+  position: relative;
+  background: transparent !important;
+}
+
+#home, #about {
+  background: transparent !important;
+}
+
+.work-page-bg, #project.work-page-bg {
+  background: transparent !important;
+}
+
+.contact-page-bg {
+  background: transparent !important;
+}
+
+/* ========================================================
+   SECTION HERO LAYOUT CONFIGURATION
+   ======================================================== */
 .section-wrapper {
   width: 100%;
   max-width: 1100px;
@@ -139,14 +175,14 @@ body {
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 4px;
-  color: var(--powder-blue); /* Label teks atas jadi biru muda menyala */
+  color: var(--powder-blue);
   margin-bottom: 12px;
   display: block;
 }
 
 .section-content h1 {
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  line-height: 1.05;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.1;
   margin-bottom: 20px;
   letter-spacing: -2px;
   font-weight: 700;
@@ -154,7 +190,7 @@ body {
 }
 
 .section-content h2 {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   line-height: 1.2;
   margin-bottom: 20px;
   letter-spacing: -1px;
@@ -163,23 +199,21 @@ body {
 }
 
 .section-description {
-  color: rgba(254, 250, 239, 0.8); /* Teks deskripsi dibuat sedikit transparan agar nyaman dibaca */
+  color: rgba(254, 250, 239, 0.8);
   line-height: 1.8;
   font-size: 1.05rem;
   margin-bottom: 35px;
   text-align: justify;
-  text-justify: inter-word;
 }
 
-/* =========================
-   IMAGES SYSTEM
-========================= */
+/* ========================================================
+   IMAGES & COMPONENT SYSTEM
+   ======================================================== */
 .image-container {
   width: 280px;
   height: 340px;
   overflow: hidden;
-  background: #ccc; 
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(175, 210, 250, 0.2);
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -202,31 +236,6 @@ body {
 
 .image-container:hover { transform: scale(1.02); }
 
-/* Efek dasar sebelum elemen masuk ke layar */
-.reveal-left { 
-  opacity: 0; 
-  transform: translateX(-50px); 
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.reveal-right { 
-  opacity: 0; 
-  transform: translateX(50px); 
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.reveal-up { 
-  opacity: 0; 
-  transform: translateY(40px); 
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* Kelas aktif saat elemen ada di dalam layar */
-.reveal-left.active, 
-.reveal-right.active, 
-.reveal-up.active { 
-  opacity: 1; 
-  transform: translate(0); 
-}
-
 .minimal-btn {
   display: inline-block;
   padding: 14px 35px;
@@ -242,34 +251,17 @@ body {
 
 .minimal-btn:hover { 
   background: var(--pale-brown); 
-  color: var(--deep-blue); /* Saat dihover teks berubah jadi kontras gelap */
+  color: var(--deep-blue);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(185, 145, 94, 0.3); /* Shadow mengikuti warna tombol */
+  box-shadow: 0 10px 20px rgba(185, 145, 94, 0.3);
 }
 
-/* =========================
-   ABOUT PAGE FIX (NO BLANK)
-========================= */
+/* ========================================================
+   ABOUT PAGE LAYOUT (MURNI TIDAK DIUBAH SAMA SEKALI)
+   ======================================================== */
 .about-page {
-background: var(--deep-blue) !important;
+  background: transparent !important;
   color: var(--floral-white) !important;
-  overflow-y: auto !important;
-}
-
-/* Matikan snap scroll di About agar konten tidak hilang */
-.about-page .scroll-container {
-  height: auto !important;
-  overflow: visible !important;
-  display: block !important;
-  scroll-snap-type: none !important;
-}
-
-/* =========================
-   PERBAIKAN TOTAL: ALVALENS LAYOUT
-========================= */
-.about-page {
-  background: var(--deep-blue); /* Sekarang background dasarnya jadi Deep Blue */
-  color: var(--floral-white);   /* Semua teks global defaultnya jadi krem putih mewah */
   overflow-y: auto !important;
 }
 
@@ -279,7 +271,6 @@ background: var(--deep-blue) !important;
   padding: 140px 5% 80px;
 }
 
-/* Judul Atas Kiri */
 .about-section-title {
   font-family: 'Inter', sans-serif;
   font-size: 2.2rem;
@@ -289,7 +280,6 @@ background: var(--deep-blue) !important;
   text-align: left;
 }
 
-/* Grid Pembagi 2 Kolom */
 .about-wrapper-alvalens {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -298,20 +288,16 @@ background: var(--deep-blue) !important;
   margin-bottom: 100px;
 }
 
-/* =========================
-   KOLASE FOTO (STACKING EFFECT)
-========================= */
 .about-images-collage {
   position: relative;
   width: 100%;
-  height: 480px; /* Menjaga wadah tumpukan foto stabil */
+  height: 480px;
 }
 
 .img-box {
   position: absolute;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  /* KUNCINYA DI SINI: Pake cubic-bezier biar transisi pas hover keluar-masuk halus banget */
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.3s ease;
 }
 
@@ -319,49 +305,22 @@ background: var(--deep-blue) !important;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%); /* Efek monokrom hitam putih */
+  filter: grayscale(100%);
   transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* EFEK TIMBUL HALUS PAS DI-HOVER */
 .img-box:hover {
   transform: translateY(-12px) scale(1.03); 
   box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
   z-index: 10 !important;
 }
 
-.img-box:hover img {
-  filter: grayscale(0%); /* Berwarna saat di-hover */
-}
+.img-box:hover img { filter: grayscale(0%); }
 
-/* Pengaturan Posisi & Ukuran Persis Gambar */
-.img-main {
-  width: 260px;
-  height: 320px;
-  left: 50px;
-  top: 60px;
-  z-index: 2;
-}
+.img-main { width: 260px; height: 320px; left: 50px; top: 60px; z-index: 2; }
+.img-top-right { width: 180px; height: 200px; right: 60px; top: 10px; z-index: 1; }
+.img-bottom-center { width: 220px; height: 240px; left: 280px; bottom: -20px; z-index: 3; }
 
-.img-top-right {
-  width: 180px;
-  height: 200px;
-  right: 60px;
-  top: 10px;
-  z-index: 1;
-}
-
-.img-bottom-center {
-  width: 220px;
-  height: 240px;
-  left: 280px;
-  bottom: -20px;
-  z-index: 3;
-}
-
-/* =========================
-   KOLOM TEKS & DESKRIPSI
-========================= */
 .about-text-content {
   display: flex;
   flex-direction: column;
@@ -380,19 +339,16 @@ background: var(--deep-blue) !important;
   font-size: 1.05rem;
   line-height: 1.8;
   color: rgba(254, 250, 239, 0.85) !important;
-  text-align: justify; /* Membuat teks rata kanan-kiri yang rapi */
+  text-align: justify;
 }
 
 .about-paragraph strong {
-  color: var(--powder-blue) !important; /* Teks tebal/highlight jadi biru muda */
+  color: var(--powder-blue) !important;
   font-weight: 600;
 }
 
-/* =========================
-   SPOTIFY WIDGET BOX
-========================= */
 .spotify-widget {
-display: flex;
+  display: flex;
   align-items: center;
   gap: 15px;
   border: 1.5px solid rgba(175, 210, 250, 0.3);
@@ -404,63 +360,10 @@ display: flex;
   background: rgba(24, 35, 80, 0.3);
 }
 
-.spotify-icon svg {
-  width: 40px;
-  height: 40px;
-  color: #1DB954; /* Kita kasih warna ijo khas Spotify asli biar mantap */
-}
-
-.spotify-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.spotify-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--floral-white);
-}
-
-.spotify-status {
-  font-size: 0.95rem;
-  color: var(--powder-blue);
-}
-
-/* Responsif Mobile */
-@media (max-width: 992px) {
-  .about-wrapper-alvalens {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-  .about-images-collage {
-    height: 400px;
-  }
-  .img-main { width: 200px; height: 260px; left: 10px; }
-  .img-top-right { width: 140px; height: 160px; right: 20px; }
-  .img-bottom-center { width: 160px; height: 180px; left: 180px; }
-}
-
-/* Paksa konten About muncul tanpa menunggu JS */
-.reveal-left { 
-  opacity: 0; 
-  transform: translateX(-50px); 
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.reveal-right { 
-  opacity: 0; 
-  transform: translateX(50px); 
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.reveal-up { 
-  opacity: 0; 
-  transform: translateY(40px); 
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.reveal-left.active, .reveal-right.active, .reveal-up.active { 
-  opacity: 1 !important; 
-  transform: translate(0) !important;
-}
+.spotify-icon svg { width: 40px; height: 40px; color: #1DB954; }
+.spotify-info { display: flex; flex-direction: column; }
+.spotify-title { font-size: 0.95rem; font-weight: 700; color: var(--floral-white); }
+.spotify-status { font-size: 0.95rem; color: var(--powder-blue); }
 
 .about-hero h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -496,167 +399,31 @@ display: flex;
 }
 
 .timeline-item { margin-bottom: 30px; }
-.timeline-item .year { font-size: 0.85rem; color: var(--pale-brown); /* Tahun pendidikan/organisasi di-highlight warna cokelat emas */ display: block; margin-bottom: 5px; }
-.timeline-item h4 { font-size: 1.1rem; 
-  font-weight: 700;
-  color: var(--floral-white) !important; /* Memastikan judul instansi berwarna terang */
-  margin-bottom: 5px; }
-
-  .timeline-item p {
-  color: rgba(254, 250, 239, 0.7) !important; /* Deskripsi instansi */
-}
+.timeline-item .year { font-size: 0.85rem; color: var(--pale-brown); display: block; margin-bottom: 5px; }
+.timeline-item h4 { font-size: 1.1rem; font-weight: 700; color: var(--floral-white) !important; margin-bottom: 5px; }
+.timeline-item p { color: rgba(254, 250, 239, 0.7) !important; }
 
 .skills-wrapper { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
 .skills-wrapper span {
   padding: 8px 20px;
   border: 1px solid var(--powder-blue);
-    color: var(--powder-blue);
+  color: var(--powder-blue);
   border-radius: 50px;
   font-size: 0.85rem;
   transition: 0.3s;
 }
-.skills-wrapper span:hover { background: var(--powder-blue);
-    color: var(--deep-blue); }
-
-/* =========================
-   OVERLAY MENU & HAMBURGER FIX
-========================= */
-.hamburger { 
-  border: none; 
-  background: none; 
-  cursor: pointer; 
-  z-index: 1001; 
-  display: block;
-  padding: 10px; /* Kasih ruang klik biar nyaman */
+.skills-wrapper span:hover { 
+  background: var(--powder-blue);
+  color: var(--deep-blue); 
 }
-
-/* Set isi garis hitam hamburger biar muncul mantap */
-.hamburger span { 
-  display: block; 
-  width: 30px; 
-  height: 2px; 
-  background: var(--floral-white) !important; /* Garis burger jadi putih biar kelihatan */
-  margin: 6px 0; 
-  transition: all 0.3s ease; 
-}
-
-/* Animasi keren pas hamburger diklik (menjadi X) */
-.hamburger.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Perbaikan Overlay Menu biar gak ngerusak tampilan utama */
-.overlay-menu {
-  position: fixed;
-  inset: 0;
-  background: var(--deep-blue) !important; /* Menu layar penuh jadi biru gelap */
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  /* Sembunyikan total saat tidak aktif */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none; 
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-/* Saat overlay aktif dibuka */
-.overlay-menu.active { 
-  opacity: 1; 
-  visibility: visible; 
-  pointer-events: auto; /* Aktifkan klik tombol link */
-}
-
-/* Merapikan link di dalam overlay menu */
-.overlay-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-}
-
-.overlay-links a { 
-  display: block; 
-  font-size: 2.5rem; 
-  font-weight: 700; 
-  color: rgba(254, 250, 239, 0.3);
-  text-decoration: none; 
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.4s ease; 
-}
-
-.overlay-links a:hover { 
-  color: var(--powder-blue);
-  transform: translateX(10px); 
-}
-
-@media (max-width: 768px) {
-  .about-grid { grid-template-columns: 1fr; }
-}
-
 
 /* ========================================================
-   EFEK LATAR BELAKANG TERINTEGRASI (ROMBAKAN EGI)
-   ======================================================== */
-
-/* Pembungkus Home & About: Memasang Gambar Heksagonal */
-.home-about-group {
-  width: 100%;
-  position: relative;
-  background-image: url('assets/bck-sec-homedanabout.png'); /* Menggunakan file heksagonal */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  /* Trik blending mode: Menyaring background putih abu-abu menjadi menyatu dengan warna dasar body */
-  background-blend-mode: overlay;
-  background-color: var(--deep-blue);
-}
-
-/* Memastikan background aslinya transparan tipis agar pola di bawahnya tembus indah */
-#home, #about {
-  background: transparent !important; /* Paksa jadi transparan agar pola heksagonal di bawahnya tembus */
-  backdrop-filter: none !important;  /* Matikan blur agar gambar abstrak di belakang terlihat tajam */
-}
-
-/* Section Work: Memasang Gambar Gelombang Asap */
-.work-page-bg {
-  background-image: url('image_91da5.png'), linear-gradient(var(--deep-blue), var(--deep-blue));
-  background-size: cover;
-  background-position: center;
-  /* Screen membuat warna putih jadi transparan di atas warna dasar gelap */
-  background-blend-mode: screen;
-  background-color: var(--deep-blue);
-  opacity: 1;
-}
-
-/* Section Contact: Memasang Gambar Marmer Premium */
-.contact-page-bg {
-  background-image: url('image_901c8f.jpg');
-  background-size: cover;
-  background-position: center;
-  /* Color-burn / Multiply menyaring gumpalan marmer abu menjadi urat-urat gelap eksklusif */
-  background-blend-mode: color-burn;
-  background-color: var(--deep-blue);
-}
-
-
-/* ========================================================
-   KOMPONEN: INFINITE MARQUEE TEXT RUNNING
-   ======================================================== */
+   INFINITE MARQUEE SYSTEM
+======================================================== */
 .marquee-container {
   width: 100%;
   overflow: hidden;
-  background: var(--pale-brown); /* Menggunakan kelompok warna cokelat emas premium lu */
+  background: var(--pale-brown);
   padding: 18px 0;
   display: flex;
   align-items: center;
@@ -670,7 +437,6 @@ display: flex;
   display: flex;
   white-space: nowrap;
   gap: 0;
-  /* Memanggil fungsi animasi berjalan terus menerus */
   animation: marquee-running 25s linear infinite;
 }
 
@@ -678,48 +444,185 @@ display: flex;
   font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--deep-blue); /* Warna teks kontras gelap kontras tinggi */
+  color: var(--deep-blue);
   letter-spacing: 2px;
-  padding-right: 40px; /* Jarak jeda antar kalimat repetisi */
+  padding-right: 40px;
 }
 
-/* Logika Animasi Pergeseran Koordinat X Murni */
 @keyframes marquee-running {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-33.33%);
-  }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33.33%); }
 }
-
 
 /* ========================================================
-   OPTIMALISASI ANIMASI JAVASCRIPT REVEAL SYSTEM
+   SISTEM REVEAL ANIMATION (MURNI DIJAGA TIDAK BERUBAH)
    ======================================================== */
 .reveal-left, .reveal-right, .reveal-up {
   opacity: 0;
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 .reveal-left { transform: translateX(-40px); }
 .reveal-right { transform: translateX(40px); }
 .reveal-up { transform: translateY(40px); }
 
-/* Saat JS mendeteksi scroll atau load, kelas active ini langsung dipaksa berjalan */
-.reveal-left.active, 
-.reveal-right.active, 
-.reveal-up.active { 
+.reveal-left.active, .reveal-right.active, .reveal-up.active { 
   opacity: 1 !important; 
   transform: translate(0) !important; 
 }
 
+/* ========================================================
+   OVERLAY HAMBURGER SYSTEM
+   ======================================================== */
+.hamburger { 
+  border: none; 
+  background: none; 
+  cursor: pointer; 
+  z-index: 1005; 
+  display: none; 
+  padding: 10px;
+}
 
-/* Section Project: Memasang Gambar Gelombang Asap */
-#project.work-page-bg {
-  background-image: url('image_91da5.png'), linear-gradient(var(--deep-blue), var(--deep-blue));
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: screen;
-  background-color: var(--deep-blue);
+.hamburger span { 
+  display: block; 
+  width: 30px; 
+  height: 2px; 
+  background: var(--floral-white) !important; 
+  margin: 6px 0; 
+  transition: all 0.3s ease; 
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.overlay-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 35, 80, 0.98) !important;
+  z-index: 1004;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; 
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.overlay-menu.active { 
+  opacity: 1; 
+  visibility: visible; 
+  pointer-events: auto; 
+}
+
+.overlay-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.overlay-links a { 
+  display: block; 
+  font-size: 2rem; 
+  font-weight: 700; 
+  color: var(--floral-white);
+  text-decoration: none; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease; 
+}
+
+.overlay-links a:hover { color: var(--powder-blue); }
+
+/* ========================================================
+   SISTEM RESPONSIF ANTI-BERANTAKAN (ALL DEVICES RESOLUTION)
+   ======================================================== */
+
+/* Tablet & Mobile Layout Fix */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0 6%;
+  }
+  .nav-links {
+    display: none; 
+  }
+  .hamburger {
+    display: block; 
+  }
+  .section {
+    padding: 100px 6% 60px;
+    height: auto;
+    min-height: 100vh;
+  }
+  .section-wrapper {
+    flex-direction: column-reverse; 
+    gap: 40px;
+    text-align: center;
+  }
+  .section-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  .section-description {
+    text-align: center;
+  }
+  .section-image {
+    justify-content: center;
+    width: 100%;
+  }
+  .image-container {
+    width: 240px;
+    height: 300px;
+  }
+  .about-wrapper-alvalens {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-images-collage {
+    height: 360px;
+  }
+  .img-main { width: 180px; height: 230px; left: 10px; top: 40px; }
+  .img-top-right { width: 120px; height: 140px; right: 10px; top: 10px; }
+  .img-bottom-center { width: 140px; height: 160px; left: 150px; bottom: 0px; }
+}
+
+/* Smartphone Layar Kecil Fix */
+@media (max-width: 576px) {
+  .navbar.scrolled {
+    width: 92%;
+    top: 10px;
+  }
+  .logo {
+    font-size: 1.2rem;
+  }
+  .section-content h1 {
+    font-size: 2.3rem; 
+    line-height: 1.2;
+  }
+  .section-content h2 {
+    font-size: 1.6rem;
+  }
+  .section-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .about-section-title {
+    font-size: 1.8rem;
+  }
+  .about-name {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .about-paragraph {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .spotify-widget {
+    padding: 10px 15px;
+  }
 }

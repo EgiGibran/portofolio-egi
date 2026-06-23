@@ -5,19 +5,153 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tentang — Egi</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Khusus untuk Interaktif Tab Kategori Skill ala image_175cc5.png -->
+  <style>
+    .skills-container-interactive {
+      width: 100%;
+      max-width: 1100px;
+      margin: 60px auto 20px;
+      text-align: center;
+    }
+    .skills-header-text h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--floral-white);
+      margin-bottom: 10px;
+    }
+    .skills-header-text p {
+      color: rgba(254, 250, 239, 0.7);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+    /* Grid Kategori Kartu Atas */
+    .skills-category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    .skill-card-btn {
+      background: rgba(24, 35, 80, 0.4);
+      border: 1.5px solid rgba(175, 210, 250, 0.15);
+      border-radius: 16px;
+      padding: 30px 20px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .skill-card-btn .icon-box {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--powder-blue);
+      transition: transform 0.3s ease;
+    }
+    .skill-card-btn h4 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--floral-white);
+    }
+    .skill-card-btn p {
+      font-size: 0.85rem;
+      color: rgba(254, 250, 239, 0.6);
+      line-height: 1.4;
+    }
+    /* Efek Hover & Aktif Sesuai Referensi Gambar */
+    .skill-card-btn:hover {
+      transform: translateY(-5px);
+      border-color: rgba(175, 210, 250, 0.4);
+      background: rgba(24, 35, 80, 0.6);
+    }
+    .skill-card-btn:hover .icon-box {
+      transform: scale(1.1);
+    }
+    .skill-card-btn.active-tab {
+      background: rgba(24, 35, 80, 0.8);
+      border: 2px solid var(--powder-blue);
+      box-shadow: 0 10px 30px rgba(175, 210, 250, 0.1);
+    }
+    /* Panel Tempat Menampilkan Stack di Bawah */
+    .tech-stack-display-panel {
+      background: rgba(24, 35, 80, 0.25);
+      border: 1.5px solid rgba(175, 210, 250, 0.1);
+      border-radius: 16px;
+      padding: 40px 30px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .tech-stack-display-panel h5 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--pale-brown);
+      margin-bottom: 5px;
+    }
+    .tab-content-panel {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      animation: fadeInSmooth 0.5s ease forwards;
+    }
+    .tab-content-panel.active-panel {
+      display: flex;
+    }
+    /* Desain Tombol Kapsul Mini */
+    .pill-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: rgba(254, 250, 239, 0.05);
+      border: 1px solid rgba(254, 250, 239, 0.15);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--floral-white);
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .pill-badge::before {
+      content: '✦';
+      color: var(--pale-brown);
+      font-size: 0.75rem;
+    }
+    .pill-badge:hover {
+      background: var(--powder-blue);
+      color: var(--deep-blue);
+      border-color: var(--powder-blue);
+    }
+
+    @keyframes fadeInSmooth {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Penyesuaian Responsif Layar HP */
+    @media (max-width: 768px) {
+      .skills-category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .skill-card-btn {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body class="about-page">
-
-  <!-- <header class="navbar scrolled">
-    <a href="index.html" class="logo">Egi.</a>
-    <nav class="nav-links">
-      <a href="index.html">Beranda</a>
-      <a href="about.html" style="color: var(--powder-blue); font-weight: 600;">Tentang</a>
-      <a href="index.html#project">Portofolio</a>
-      <a href="index.html#contact">Kontak</a>
-    </nav>
-  </header> -->
 
   <main class="about-container">
     <section class="about-hero">
@@ -79,14 +213,77 @@
       </div>
     </section>
 
-    <section class="skills-section reveal-up">
-      <h3>Keahlian Teknis & Alat Berpikir</h3>
-      <div class="skills-wrapper">
-        <span>PHP / CodeIgniter 4</span>
-        <span>MySQL / Database Management</span>
-        <span>Bootstrap / Tailwind CSS</span>
-        <span>Git / GitHub</span>
-        <span>Cisco Packet Tracer</span>
+    <!-- ROMBAKAN UTAMA: INTERACTIVE TABBED SKILLS LAYOUT -->
+    <section class="skills-container-interactive reveal-up">
+      <div class="skills-header-text">
+        <h2>Skills & Expertise</h2>
+        <p>Klik pada salah satu kategori untuk melihat daftar keahlian dan teknologi yang saya kuasai.</p>
+      </div>
+
+      <!-- Tiga Kartu Kategori Pilihan Atas -->
+      <div class="skills-category-grid">
+        <div class="skill-card-btn active-tab" onclick="switchSkillTab(event, 'web-dev-panel')">
+          <div class="icon-box">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h4>Web Development</h4>
+          <p>Membangun antarmuka web modern, responsif, dan interaktif.</p>
+        </div>
+
+        <div class="skill-card-btn" onclick="switchSkillTab(event, 'backend-panel')">
+          <div class="icon-box">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v6a2 2 0 012-2m14-8V7a2 2 0 00-2-2H5a2 2 0 00-2 2v4" />
+            </svg>
+          </div>
+          <h4>Backend & API</h4>
+          <p>Mengelola logika sistem server, arsitektur MVC, dan pangkalan data.</p>
+        </div>
+
+        <div class="skill-card-btn" onclick="switchSkillTab(event, 'operator-panel')">
+          <div class="icon-box">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h4>Computer Operator</h4>
+          <p>Administrasi data perkantoran dan manajemen berkas berbasis cloud.</p>
+        </div>
+      </div>
+
+      <!-- Container Tampilan Hasil Stack di Bawah -->
+      <div class="tech-stack-display-panel">
+        <h5>Technology Stack</h5>
+        
+        <!-- Isi Kategori 1: Web Development -->
+        <div id="web-dev-panel" class="tab-content-panel active-panel">
+          <span class="pill-badge">HTML</span>
+          <span class="pill-badge">CSS</span>
+          <span class="pill-badge">JavaScript</span>
+          <span class="pill-badge">CodeIgniter 4</span>
+          <span class="pill-badge">Laravel</span>
+          <span class="pill-badge">Bootstrap</span>
+        </div>
+
+        <!-- Isi Kategori 2: Backend & API -->
+        <div id="backend-panel" class="tab-content-panel">
+          <span class="pill-badge">PHP</span>
+          <span class="pill-badge">CodeIgniter 4</span>
+          <span class="pill-badge">Laravel</span>
+          <span class="pill-badge">MySQL</span>
+        </div>
+
+        <!-- Isi Kategori 3: Computer Operator -->
+        <div id="operator-panel" class="tab-content-panel">
+          <span class="pill-badge">Microsoft Word</span>
+          <span class="pill-badge">Microsoft Excel</span>
+          <span class="pill-badge">Microsoft PowerPoint</span>
+          <span class="pill-badge">Google Docs</span>
+          <span class="pill-badge">Google Sheets</span>
+          <span class="pill-badge">Google Slides</span>
+        </div>
       </div>
     </section>
 
@@ -96,17 +293,35 @@
   </main>
 
   <script src="script.js"></script>
+  
+  <!-- JavaScript Logika Pengubah Tab Kategori Keren Berkecepatan Tinggi -->
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const elementsToAnimate = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-    setTimeout(() => {
-      elementsToAnimate.forEach((element, index) => {
-        setTimeout(() => {
-          element.classList.add('active');
-        }, index * 150);
-      });
-    }, 100);
-  });
-</script>
+    function switchSkillTab(event, panelId) {
+      // 1. Hapus kelas active-tab dari semua kartu kategori atas
+      const cards = document.querySelectorAll('.skill-card-btn');
+      cards.forEach(card => card.classList.remove('active-tab'));
+      
+      // 2. Sembunyikan seluruh isi panel badge teknologi di bawah
+      const panels = document.querySelectorAll('.tab-content-panel');
+      panels.forEach(panel => panel.classList.remove('active-panel'));
+      
+      // 3. Pasang kelas aktif ke elemen kartu yang sedang diklik user
+      event.currentTarget.classList.add('active-tab');
+      
+      // 4. Munculkan panel penampung stack yang sesuai dengan transisi halus
+      document.getElementById(panelId).classList.add('active-panel');
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const elementsToAnimate = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+      setTimeout(() => {
+        elementsToAnimate.forEach((element, index) => {
+          setTimeout(() => {
+            element.classList.add('active');
+          }, index * 150);
+        });
+      }, 100);
+    });
+  </script>
 </body>
 </html>
