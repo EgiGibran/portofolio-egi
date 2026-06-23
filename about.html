@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang — Egi</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+</head>
+<body class="about-page">
+
+  <!-- <header class="navbar scrolled">
+    <a href="index.html" class="logo">Egi.</a>
+    <nav class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="about.html" style="color: var(--powder-blue); font-weight: 600;">Tentang</a>
+      <a href="index.html#project">Portofolio</a>
+      <a href="index.html#contact">Kontak</a>
+    </nav>
+  </header> -->
+
+  <main class="about-container">
+    <section class="about-hero">
+      <h2 class="about-section-title reveal-left">Siapa Saya?</h2>
+    </section>
+
+    <div class="about-wrapper-alvalens">
+      <div class="about-images-collage reveal-left">
+        <div class="img-box img-main"><img src="assets/IMG_1856.jpg" alt="Foto Egi 1"></div>
+        <div class="img-box img-top-right"><img src="assets/IMG_1967.jpg" alt="Foto Egi 2"></div>
+        <div class="img-box img-bottom-center"><img src="assets/IMG_1965.jpg" alt="Foto Egi 3"></div>
+      </div>
+
+      <div class="about-text-content reveal-right">
+        <h1 class="about-name">Egi</h1>
+        <p class="about-paragraph">
+          Halo, saya Egi Gibran. Saya adalah seorang mahasiswa program studi Manajemen Informatika di Politeknik LP3I Jakarta yang berfokus pada bidang pengembangan situs web menggunakan bahasa pemrograman PHP dan framework CodeIgniter 4.
+        </p>
+        <p class="about-paragraph">
+          Saya memiliki keyakinan bahwa teknologi bukan sekadar mengenai baris kode, melainkan bagaimana kita dapat menyelesaikan permasalahan nyata melalui solusi digital yang estetik, solutif, dan efisien.
+        </p>
+        
+        <div class="spotify-widget">
+          <div class="spotify-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.893-.982-.336.075-.668-.135-.744-.47-.075-.336.135-.668.47-.743 3.856-.88 7.15-.51 9.822 1.127.296.18.388.565.205.861zm1.225-2.72c-.227.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.08-1.182-.413.125-.847-.107-.972-.52-.125-.413.107-.847.52-.972 3.676-1.114 8.243-.57 11.35 1.344.366.226.486.706.256 1.071zm.105-2.833C14.444 8.788 8.715 8.6 5.39 9.61c-.512.156-1.054-.133-1.21-.646-.156-.513.132-1.054.645-1.21 3.812-1.157 10.122-.94 14.135 1.443.46.273.61.87.337 1.33-.273.46-.87.61-1.33.338z"/>
+            </svg>
+          </div>
+          <div class="spotify-info">
+            <span class="spotify-title">Sedang Offline</span>
+            <span class="spotify-status">Spotify</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="about-grid">
+      <div class="grid-col reveal-left">
+        <h3>Pendidikan</h3>
+        <div class="timeline-item">
+          <span class="year">2024 — Sekarang</span>
+          <h4>Manajemen Informatika</h4>
+          <p>Politeknik LP3I Jakarta</p>
+        </div>
+      </div>
+
+      <div class="grid-col reveal-right">
+        <h3>Pengalaman Organisasi</h3>
+        <div class="timeline-item">
+          <span class="year">2024 — Sekarang</span>
+          <h4>Menteri Kajian Aksi Strategis</h4>
+          <p>Badan Eksekutif Mahasiswa (BEM)</p>
+        </div>
+        <div class="timeline-item">
+          <span class="year">2024 - Sekarang</span>
+          <h4>Anggota Aktif</h4>
+          <p>LP3I Computer Club</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section reveal-up">
+      <h3>Keahlian Teknis & Alat Berpikir</h3>
+      <div class="skills-wrapper">
+        <span>PHP / CodeIgniter 4</span>
+        <span>MySQL / Database Management</span>
+        <span>Bootstrap / Tailwind CSS</span>
+        <span>Git / GitHub</span>
+        <span>Cisco Packet Tracer</span>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 80px;">
+        <a href="index.html" class="minimal-btn">Kembali ke Beranda</a>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const elementsToAnimate = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+    setTimeout(() => {
+      elementsToAnimate.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList.add('active');
+        }, index * 150);
+      });
+    }, 100);
+  });
+</script>
+</body>
+</html>

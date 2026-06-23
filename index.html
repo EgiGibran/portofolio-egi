@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Egi — Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <a href="#home" class="logo nav-trigger">Egi</a>
+
+    <nav class="nav-links">
+      <a href="#home" class="nav-trigger">Home</a>
+      <a href="#about" class="nav-trigger">About</a>
+      <a href="#project" class="nav-trigger">Work</a>
+      <a href="#contact" class="nav-trigger">Contact</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="overlay-menu" id="overlayMenu">
+    <nav class="overlay-links">
+      <a href="#home" class="nav-trigger">Home</a>
+      <a href="#about" class="nav-trigger">About</a>
+      <a href="#project" class="nav-trigger">Work</a>
+      <a href="#contact" class="nav-trigger">Contact</a>
+    </nav>
+  </div>
+
+  <main class="scroll-container">
+
+    <!-- 1. PEMBUNGKUS UTAMA UNTUK BACKGROUND HEKSAGONAL (MENGAPIT HOME SAMPAI SEBELUM MARQUEE) -->
+<div class="home-about-group">
+
+  <!-- SECTION HOME -->
+  <section class="section" id="home">
+    <div class="section-wrapper">
+      <div class="section-content reveal-left">
+        <p class="section-label">Egi Gibran</p>
+        <h2><b>Full Stack Software Engineer</b></h2>
+        <p class="section-description">
+          Mahasiswa Manajemen Informatika yang fokus pada pengembangan web minimalis, 
+          interaksi yang halus, dan arsitektur frontend modern.
+        </p>
+        <a href="#about" class="minimal-btn nav-trigger">Explore More</a>
+      </div>
+      <div class="section-image reveal-right">
+        <div class="image-container image-pill">
+          <img src="assets/DSC02403.JPG" alt="Egi Portrait">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ELEMEN BARU: INFINITE MARQUEE TEXT (DIPASANG TEPAT SEBELUM ABOUT) -->
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span>WEB DEVELOPMENT • MANAGEMENT INFORMATICS • PHP • CODEIGNITER 4 • CYBER SECURITY • </span>
+      <span>WEB DEVELOPMENT • MANAGEMENT INFORMATICS • PHP • CODEIGNITER 4 • CYBER SECURITY • </span>
+      <span>WEB DEVELOPMENT • MANAGEMENT INFORMATICS • PHP • CODEIGNITER 4 • CYBER SECURITY • </span>
+    </div>
+  </div>
+
+  <!-- SECTION ABOUT -->
+  <section class="section" id="about">
+    <div class="section-wrapper reverse">
+      <div class="section-content reveal-right">
+        <p class="section-label">About Me</p>
+        <h2>Desain bersih, interaksi penuh makna.</h2>
+        <p class="section-description">
+          Gua percaya bahwa teknologi harus terasa intuitif. Fokus gua adalah membangun 
+          pengalaman digital yang tidak hanya berfungsi baik, tapi juga memanjakan mata.
+        </p>
+        <a href="about.html" class="minimal-btn">Learn More</a>
+      </div>
+      <div class="section-image reveal-left">
+        <div class="image-container image-square">
+          <img src="assets/IMG_1856.jpg" alt="About Egi">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div> <!-- KUNCI PENUTUP PEMBUNGKUS HOME & ABOUT -->
+
+
+<!-- 3. SECTION WORK / PROJECT (DENGAN BACKGROUND GELOMBANG ASAP) -->
+<section class="section work-page-bg" id="project">
+  <div class="section-wrapper">
+    <div class="section-content reveal-left">
+      <p class="section-label">Featured Work</p>
+      <h2>Produk digital dengan arahan visual premium.</h2>
+      <p class="section-description">
+        Koleksi proyek pilihan yang mengedepankan performa tinggi dan estetika modern, 
+        mulai dari web organisasi hingga sistem e-commerce.
+      </p>
+      <a href="#" class="minimal-btn">View Detail</a>
+    </div>
+    <div class="section-image reveal-right">
+      <div class="image-container image-square">
+        <img src="assets/Frame 1.png" alt="Project Work">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 4. SECTION CONTACT (DENGAN BACKGROUND MARMER PREMIUM) -->
+<section class="section contact-page-bg" id="contact">
+  <div class="section-wrapper reverse">
+    <div class="section-content reveal-right">
+      <p class="section-label">Get In Touch</p>
+      <h2>Mari buat sesuatu yang berkesan bersama.</h2>
+      <p class="section-description">
+        Terbuka untuk kolaborasi kreatif, proyek freelance, atau sekadar 
+        diskusi teknologi. Hubungi gua kapan saja.
+      </p>
+      <a href="#" class="minimal-btn">Contact Me</a>
+    </div>
+    <div class="section-image reveal-left">
+      <div class="image-container image-square">
+        <img src="assets/setup.jpg" alt="Contact Egi">
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <script src="script.js"></script>
+  <!-- <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Ambil semua elemen yang punya class animasi
+    const animatedElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
+
+    const observerOptions = {
+      root: null, // Menggunakan viewport browser sebagai area deteksi
+      rootMargin: "0px",
+      threshold: 0.15 // Elemen memicu animasi jika 15% bagiannya sudah masuk layar
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Pas elemen masuk ke layar (scroll ke bawah/atas), tambahkan class active
+          entry.target.classList.add('active');
+        } else {
+          // KUNCINYA DI SINI: Pas elemen keluar dari layar, hapus class active biar bisa animasi lagi
+          entry.target.classList.remove('active');
+        }
+      });
+    }, observerOptions);
+
+    // Daftarkan semua elemen ke observer
+    animatedElements.forEach(element => {
+      scrollObserver.observe(element);
+    });
+  });
+</script> -->
+</body>
+</html>
